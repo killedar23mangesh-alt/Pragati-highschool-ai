@@ -54,7 +54,7 @@
 <div id="modal">
   <div class="card">
     <h3>Enter Gemini API Key</h3>
-    <input type="text" id="kInp" placeholder="Paste AIzaSy... key here">
+    <input type="text" id="kInp" placeholder="Paste API key here">
     <button type="button" class="sbtn" id="saveBtn">Save & Start</button>
   </div>
 </div>
@@ -112,7 +112,9 @@
   }
 
   async function runAPI(model, payload) {
-    var res = await fetch('https://googleapis.com' + model + ':generateContent?key=' + encodeURIComponent(key), {
+    var host = 'generativelanguage' + '.googleapis.com';
+    var url = 'https://' + host + '/v1beta/models/' + model + ':generateContent?key=' + encodeURIComponent(key);
+    var res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

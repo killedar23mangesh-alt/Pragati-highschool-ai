@@ -139,7 +139,7 @@
           load.textContent = 'क्षमस्व, उत्तर मिळू शकले नाही.';
         }
       } catch (err) {
-        load.textContent = 'Error: इंटरनेट किंवा सर्व्हरमध्ये समस्या आली आहे.';
+        load.textContent = 'Error: ' + err.message;
       }
     }
 

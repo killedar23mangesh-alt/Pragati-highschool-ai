@@ -78,13 +78,11 @@
   };
 
   document.getElementById('saveBtn').onclick = function() {
-    var v = kInp.value.replace(/\s+/g, '');
-    if (v.indexOf('AIza') === 0) {
+    var v = kInp.value.trim();
+    if (v) {
       key = v;
       localStorage.setItem('g_key', v);
       modal.style.display = 'none';
-    } else {
-      alert('Please paste a valid key starting with AIzaSy...');
     }
   };
 
@@ -114,7 +112,7 @@
   }
 
   async function runAPI(model, payload) {
-    var res = await fetch('https://googleapis.com' + model + ':generateContent?key=' + key, {
+    var res = await fetch('https://googleapis.com' + model + ':generateContent?key=' + encodeURIComponent(key), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

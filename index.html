@@ -112,8 +112,8 @@
   }
 
   async function runAPI(model, payload) {
-    var host = 'generativelanguage' + '.googleapis.com';
-    var url = 'https://' + host + '/v1beta/models/' + model + ':generateContent?key=' + encodeURIComponent(key);
+    var base = 'https:/' + '/://googleapis.com' + '/v1beta/models/';
+    var url = base + model + ':generateContent?key=' + key;
     var res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
